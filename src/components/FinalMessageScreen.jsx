@@ -84,7 +84,7 @@ const FinalMessageScreen = ({ onRestart }) => {
       >
         {/* Letter/message card */}
         <motion.div
-          className="bg-white/90 rounded-3xl shadow-soft-lg p-8 sm:p-10 relative overflow-hidden"
+          className="bg-white/90 dark:bg-gray-800/95 rounded-3xl shadow-soft-lg p-8 sm:p-10 relative overflow-hidden"
           initial={{ y: 50, rotateX: 10 }}
           animate={{ y: 0, rotateX: 0 }}
           transition={{ delay: 0.3, duration: 0.6, type: "spring" }}
@@ -123,7 +123,7 @@ const FinalMessageScreen = ({ onRestart }) => {
           />
 
           {/* Message content */}
-          <div className="space-y-4 text-center text-gray-600 leading-relaxed">
+          <div className="space-y-4 text-center text-gray-600 dark:text-gray-300 leading-relaxed">
             <motion.p
               className="text-sm sm:text-base"
               custom={0}
@@ -270,7 +270,7 @@ const FinalMessageScreen = ({ onRestart }) => {
         href="https://github.com/aashigupta19"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-8 right-3 text-pastel-blue-500 text-sm font-medium"
+        className="absolute bottom-3 right-3 text-pastel-blue-600 dark:text-pastel-blue-200 text-xs hover:text-pastel-blue-700 dark:hover:text-white transition-colors duration-200 z-20"
       >
         made with 💕 by @aashigupta19
       </a>

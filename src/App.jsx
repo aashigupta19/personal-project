@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 
 // Import all screen components
@@ -16,6 +16,32 @@ import FinalMessageScreen from "./components/FinalMessageScreen";
 function App() {
   // Current screen state: 'landing' | 'choice' | 'shades' | 'valentine' | 'final'
   const [currentScreen, setCurrentScreen] = useState("landing");
+
+  // Dark mode state - detect system preference
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Detect system dark mode preference on mount
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    );
+    setIsDarkMode(darkModeMediaQuery.matches);
+
+    // Listen for changes in system preference
+    const handleChange = (e) => setIsDarkMode(e.matches);
+    darkModeMediaQuery.addEventListener("change", handleChange);
+
+    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  // Apply dark mode class to html element
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   /**
    * Navigate to a specific screen

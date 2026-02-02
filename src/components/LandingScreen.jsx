@@ -124,43 +124,44 @@ const LandingScreen = ({ onComplete }) => {
             </div>
           </motion.div>
 
-          {/* Center button */}
-          <motion.button
-            onClick={handleClick}
-            disabled={isOpening}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20
-                       w-16 h-16 sm:w-20 sm:h-20 rounded-full
-                       bg-gradient-to-br from-pastel-blue-300 to-pastel-blue-400
-                       shadow-lg hover:shadow-glow-blue
-                       flex items-center justify-center
-                       transition-all duration-300 ease-out
-                       btn-press cursor-pointer
-                       disabled:cursor-not-allowed"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            animate={isOpening ? { scale: 1.5, opacity: 0 } : {}}
-            transition={{ duration: 0.4 }}
-          >
-            {/* Button inner circle (like a real button) */}
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-pastel-blue-200 flex items-center justify-center shadow-inner">
-              <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-pastel-blue-400 opacity-60" />
-            </div>
-            {/* Button holes (like a clothing button) */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="grid grid-cols-2 gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
-                <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
-                <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
-                <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
+          {/* Center button - wrapped in container to prevent position shift on hover */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+            <motion.button
+              onClick={handleClick}
+              disabled={isOpening}
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full
+                         bg-gradient-to-br from-pastel-blue-300 to-pastel-blue-400
+                         shadow-lg hover:shadow-glow-blue
+                         flex items-center justify-center
+                         transition-shadow duration-300 ease-out
+                         btn-press cursor-pointer
+                         disabled:cursor-not-allowed"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              animate={isOpening ? { scale: 1.5, opacity: 0 } : { scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Button inner circle (like a real button) */}
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-pastel-blue-200 flex items-center justify-center shadow-inner">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-pastel-blue-400 opacity-60" />
               </div>
-            </div>
-          </motion.button>
+              {/* Button holes (like a clothing button) */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-pastel-blue-500 opacity-40" />
+                </div>
+              </div>
+            </motion.button>
+          </div>
         </div>
       </motion.div>
 
       {/* Subtle instruction text */}
       <motion.p
-        className="absolute bottom-8 text-pastel-blue-500 text-sm font-medium"
+        className="absolute bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 text-pastel-blue-500 dark:text-pastel-blue-300 text-sm font-medium text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: isOpening ? 0 : 0.7 }}
         transition={{ delay: 1, duration: 0.5 }}
@@ -173,8 +174,7 @@ const LandingScreen = ({ onComplete }) => {
         href="https://github.com/aashigupta19"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-8 right-3 text-pastel-blue-500 text-sm font-medium"
-        // className="absolute bottom-2 right-3 text-pastel-blue-400 text-xs opacity-50 hover:opacity-80 transition-opacity duration-200"
+        className="absolute bottom-3 right-3 text-pastel-blue-600 dark:text-pastel-blue-200 text-xs hover:text-pastel-blue-700 dark:hover:text-white transition-colors duration-200"
       >
         made with 💕 by @aashigupta19
       </a>

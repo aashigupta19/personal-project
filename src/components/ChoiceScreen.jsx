@@ -56,10 +56,10 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-pastel-blue-500 mb-2">
+        <h1 className="text-3xl sm:text-4xl font-bold text-pastel-blue-500 dark:text-pastel-blue-300 mb-2">
           Choose Your Path
         </h1>
-        <p className="text-pastel-blue-400 text-sm sm:text-base">
+        <p className="text-pastel-blue-400 dark:text-pastel-blue-400 text-sm sm:text-base">
           Where would you like to go?
         </p>
       </motion.div>
@@ -69,16 +69,16 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
         {/* Card 1: Different Shades of Blue */}
         <motion.button
           onClick={onShadesClick}
-          className="group relative w-full p-6 sm:p-8 rounded-3xl bg-white shadow-soft 
+          className="group relative w-full p-6 sm:p-8 rounded-3xl bg-white dark:bg-gray-800 shadow-soft 
                      hover:shadow-soft-lg transition-all duration-300 
-                     border-2 border-transparent hover:border-pastel-blue-200
+                     border-2 border-transparent hover:border-pastel-blue-200 dark:hover:border-pastel-blue-500
                      btn-press cursor-pointer overflow-hidden"
           variants={cardVariants}
           whileHover={{ scale: 1.02, y: -5 }}
           whileTap={{ scale: 0.98 }}
         >
           {/* Background gradient on hover */}
-          <div className="absolute inset-0 bg-gradient-to-br from-pastel-blue-50 to-pastel-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-br from-pastel-blue-50 to-pastel-blue-100 dark:from-pastel-blue-900/30 dark:to-pastel-blue-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {/* Card content */}
           <div className="relative z-10 flex items-center gap-4">
@@ -95,7 +95,7 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
 
             {/* Text */}
             <div className="text-left flex-1">
-              <h2 className="text-lg sm:text-xl font-bold text-pastel-blue-600 group-hover:text-pastel-blue-700 transition-colors">
+              <h2 className="text-lg sm:text-xl font-bold text-pastel-blue-600 dark:text-pastel-blue-300 group-hover:text-pastel-blue-700 dark:group-hover:text-pastel-blue-200 transition-colors">
                 Different Shades of Blue
               </h2>
               {/* <p className="text-xs sm:text-sm text-pastel-blue-400 mt-1">
@@ -128,24 +128,26 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
 
         {/* Decorative divider */}
         <div className="flex items-center gap-3 px-4">
-          <div className="flex-1 h-px bg-pastel-blue-200" />
-          <span className="text-pastel-blue-300 text-sm">or</span>
-          <div className="flex-1 h-px bg-pastel-blue-200" />
+          <div className="flex-1 h-px bg-pastel-blue-200 dark:bg-pastel-blue-600" />
+          <span className="text-pastel-blue-300 dark:text-pastel-blue-400 text-sm">
+            or
+          </span>
+          <div className="flex-1 h-px bg-pastel-blue-200 dark:bg-pastel-blue-600" />
         </div>
 
         {/* Card 2: Will You Be My Valentine? */}
         <motion.button
           onClick={onValentineClick}
-          className="group relative w-full p-6 sm:p-8 rounded-3xl bg-white shadow-soft 
+          className="group relative w-full p-6 sm:p-8 rounded-3xl bg-white dark:bg-gray-800 shadow-soft 
                      hover:shadow-soft-lg transition-all duration-300 
-                     border-2 border-transparent hover:border-pastel-pink-300
+                     border-2 border-transparent hover:border-pastel-pink-300 dark:hover:border-pastel-pink-400
                      btn-press cursor-pointer overflow-hidden"
           variants={cardVariants}
           whileHover={{ scale: 1.02, y: -5 }}
           whileTap={{ scale: 0.98 }}
         >
           {/* Background gradient on hover */}
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-pastel-pink-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-pastel-pink-300/20 dark:from-pink-900/30 dark:to-pastel-pink-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {/* Card content */}
           <div className="relative z-10 flex items-center gap-4">
@@ -163,7 +165,7 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
 
             {/* Text */}
             <div className="text-left flex-1">
-              <h2 className="text-lg sm:text-xl font-bold text-pastel-pink-500 group-hover:text-pastel-pink-600 transition-colors">
+              <h2 className="text-lg sm:text-xl font-bold text-pastel-pink-500 dark:text-pastel-pink-300 group-hover:text-pastel-pink-600 dark:group-hover:text-pastel-pink-200 transition-colors">
                 Will You Be My Valentine?
               </h2>
               {/* <p className="text-xs sm:text-sm text-pastel-pink-400 mt-1">
@@ -226,7 +228,7 @@ const ChoiceScreen = ({ onShadesClick, onValentineClick }) => {
         href="https://github.com/aashigupta19"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-8 right-3 text-pastel-blue-500 text-sm font-medium"
+        className="absolute bottom-3 right-3 text-pastel-blue-600 dark:text-pastel-blue-200 text-xs hover:text-pastel-blue-700 dark:hover:text-white transition-colors duration-200"
       >
         made with 💕 by @aashigupta19
       </a>

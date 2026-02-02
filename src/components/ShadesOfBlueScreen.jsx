@@ -83,7 +83,7 @@ const ShadesOfBlueScreen = ({ onBack }) => {
         {/* Back button */}
         <motion.button
           onClick={onBack}
-          className="mb-6 flex items-center gap-2 text-pastel-blue-500 hover:text-pastel-blue-600 
+          className="mb-6 flex items-center gap-2 text-pastel-blue-500 dark:text-pastel-blue-300 hover:text-pastel-blue-600 dark:hover:text-pastel-blue-200
                      transition-colors duration-200 group"
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
@@ -109,7 +109,7 @@ const ShadesOfBlueScreen = ({ onBack }) => {
           <h1 className="text-3xl sm:text-4xl font-bold text-gradient-blue mb-2">
             Different Shades of Blue
           </h1>
-          <p className="text-pastel-blue-400 text-sm sm:text-base">
+          <p className="text-pastel-blue-400 dark:text-pastel-blue-300 text-sm sm:text-base">
             Tap any color to copy its hex code 💙
           </p>
         </div>
@@ -137,7 +137,7 @@ const ShadesOfBlueScreen = ({ onBack }) => {
             onClick={() => copyToClipboard(shade.hex)}
           >
             {/* Color card */}
-            <div className="relative bg-white rounded-2xl overflow-hidden shadow-soft group-hover:shadow-soft-lg transition-shadow duration-300">
+            <div className="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-soft group-hover:shadow-soft-lg transition-shadow duration-300">
               {/* Color display area */}
               <div
                 className="h-24 sm:h-28 w-full relative overflow-hidden"
@@ -182,13 +182,13 @@ const ShadesOfBlueScreen = ({ onBack }) => {
 
               {/* Info section */}
               <div className="p-3 sm:p-4">
-                <h3 className="font-bold text-sm sm:text-base text-gray-700 truncate">
+                <h3 className="font-bold text-sm sm:text-base text-gray-700 dark:text-gray-200 truncate">
                   {shade.name}
                 </h3>
-                <p className="text-xs text-gray-400 font-mono mt-1">
+                <p className="text-xs text-gray-400 dark:text-gray-500 font-mono mt-1">
                   {shade.hex}
                 </p>
-                <p className="text-xs text-pastel-blue-400 mt-1 hidden sm:block">
+                <p className="text-xs text-pastel-blue-400 dark:text-pastel-blue-300 mt-1 hidden sm:block">
                   {shade.description}
                 </p>
               </div>
@@ -213,8 +213,8 @@ const ShadesOfBlueScreen = ({ onBack }) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
       >
-        <div className="inline-block px-6 py-3 bg-white/60 rounded-2xl shadow-soft">
-          <p className="text-pastel-blue-500 text-sm">
+        <div className="inline-block px-6 py-3 bg-white/60 dark:bg-gray-800/60 rounded-2xl shadow-soft">
+          <p className="text-pastel-blue-500 dark:text-pastel-blue-300 text-sm">
             Blue is the color of trust, loyalty, endless skies, and the colour
             of our story 😂
           </p>
@@ -251,7 +251,7 @@ const ShadesOfBlueScreen = ({ onBack }) => {
         href="https://github.com/aashigupta19"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-8 right-4 text-pastel-blue-500 text-sm font-medium"
+        className="fixed bottom-3 right-3 text-pastel-blue-600 dark:text-pastel-blue-200 text-xs hover:text-pastel-blue-700 dark:hover:text-white transition-colors duration-200 z-10"
       >
         made with 💕 by @aashigupta19
       </a>

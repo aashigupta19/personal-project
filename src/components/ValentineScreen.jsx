@@ -49,8 +49,8 @@ const ValentineScreen = ({ onYes }) => {
     // Move to next message (loop back to start if at end)
     setNoMessageIndex((prev) => (prev + 1) % noMessages.length);
 
-    // Increase YES button scale (cap at 3x)
-    setYesScale((prev) => Math.min(prev + 0.2, 3));
+    // Increase YES button scale (cap at 2.5x to keep NO button visible longer)
+    setYesScale((prev) => Math.min(prev + 0.15, 2.5));
   };
 
   /**
@@ -235,7 +235,7 @@ const ValentineScreen = ({ onYes }) => {
 
         {/* Question text */}
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-pastel-pink-500"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-pastel-pink-500 dark:text-pastel-pink-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -243,8 +243,8 @@ const ValentineScreen = ({ onYes }) => {
           Will you be my Valentine?
         </motion.h1>
 
-        {/* Buttons container */}
-        <div className="flex flex-wrap items-center justify-center gap-4 w-full">
+        {/* Buttons container - vertical layout to prevent overlap */}
+        <div className="flex flex-col items-center justify-center gap-6 w-full">
           {/* YES button - grows with each NO click */}
           <motion.button
             onClick={handleYesClick}
@@ -252,8 +252,8 @@ const ValentineScreen = ({ onYes }) => {
                        text-white font-bold rounded-full shadow-soft hover:shadow-glow-pink 
                        transition-shadow duration-300 btn-press cursor-pointer"
             style={{
-              fontSize: `${16 + (yesScale - 1) * 8}px`,
-              padding: `${12 + (yesScale - 1) * 10}px ${32 + (yesScale - 1) * 20}px`,
+              fontSize: `${16 + (yesScale - 1) * 6}px`,
+              padding: `${12 + (yesScale - 1) * 8}px ${32 + (yesScale - 1) * 16}px`,
             }}
             initial={{ scale: 0 }}
             animate={{ scale: yesScale }}
@@ -264,23 +264,25 @@ const ValentineScreen = ({ onYes }) => {
             Yes! 💕
           </motion.button>
 
-          {/* NO button - cycles through messages */}
+          {/* NO button - cycles through messages, disappears only at last message */}
           <AnimatePresence mode="wait">
-            <motion.button
-              key={noMessageIndex}
-              onClick={handleNoClick}
-              className="px-6 py-2 bg-pastel-blue-200 text-pastel-blue-600 font-semibold 
-                         rounded-full shadow-soft hover:bg-pastel-blue-300 
-                         transition-colors duration-200 btn-press cursor-pointer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              {noMessages[noMessageIndex]}
-            </motion.button>
+            {noMessageIndex < noMessages.length - 1 && (
+              <motion.button
+                key={noMessageIndex}
+                onClick={handleNoClick}
+                className="px-6 py-2 bg-pastel-blue-200 dark:bg-pastel-blue-600 text-pastel-blue-600 dark:text-white font-semibold 
+                           rounded-full shadow-soft hover:bg-pastel-blue-300 dark:hover:bg-pastel-blue-500
+                           transition-colors duration-200 btn-press cursor-pointer"
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5, y: -10 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                {noMessages[noMessageIndex]}
+              </motion.button>
+            )}
           </AnimatePresence>
         </div>
 
@@ -288,7 +290,7 @@ const ValentineScreen = ({ onYes }) => {
         <AnimatePresence>
           {noMessageIndex >= 3 && (
             <motion.p
-              className="mt-8 text-sm text-pastel-blue-400 text-center"
+              className="mt-8 text-sm text-pastel-blue-400 dark:text-pastel-blue-300 text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 0.7, y: 0 }}
               exit={{ opacity: 0 }}
@@ -303,7 +305,7 @@ const ValentineScreen = ({ onYes }) => {
       <AnimatePresence>
         {isYesClicked && (
           <motion.div
-            className="absolute inset-0 flex items-center justify-center z-50 bg-white/80"
+            className="absolute inset-0 flex items-center justify-center z-50 bg-white/80 dark:bg-gray-900/80"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -325,7 +327,7 @@ const ValentineScreen = ({ onYes }) => {
                 💕
               </motion.div>
               <motion.h2
-                className="text-3xl sm:text-4xl font-bold text-pastel-pink-500"
+                className="text-3xl sm:text-4xl font-bold text-pastel-pink-500 dark:text-pastel-pink-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -342,7 +344,7 @@ const ValentineScreen = ({ onYes }) => {
         href="https://github.com/aashigupta19"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-8 right-3 text-pastel-blue-500 text-sm font-medium"
+        className="absolute bottom-3 right-3 text-pastel-blue-600 dark:text-pastel-blue-200 text-xs hover:text-pastel-blue-700 dark:hover:text-white transition-colors duration-200 z-30"
       >
         made with 💕 by @aashigupta19
       </a>
